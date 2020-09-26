@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
 			print_r($_POST);
 
 			$this->db->select('*');
-			$this->db->where(["email" => $_POST['email'] , "password" => $_POST['password'] ]);
+			$this->db->where(["email" => $_POST['email'] , "password" => $_POST['password'] , "user_type" => 1]);
 			$query = $this->db->get('rrs_user')->result();
 			$this->session->set_userdata('admin',$query);
 			if(!empty($query)){
@@ -95,6 +95,33 @@ class Admin extends CI_Controller {
 		}
 	 	$this->load->view('admin/header');
 		$this->load->view('admin/addtrains',$data);
+		$this->load->view('admin/footer');
+	}
+	public function showbooking()
+	{
+		$data['all_bookings'] = $this->db->select('*')
+								->from('books')
+								->join('rss_train','rss_train.train_no = books.train_id')
+								->join('rrs_user','rrs_user.user_id = books.user_id' )
+								->get()->result();
+		
+		$this->load->view('admin/header');
+		$this->load->view('admin/showbookings',$data);
+		$this->load->view('admin/footer');
+	}
+	public function delete_booking($id)
+	{
+		
+		$this->db->where('id', $id);
+		$this->db->delete('books');
+		$this->session->set_flashdata('booking_deleted', 'Booking deleted successfully!');
+		redirect('admin/showbooking');
+	}
+	public function showtrains()
+	{
+		$data['trains'] = $this->db->get('rss_train')->result();
+		$this->load->view('admin/header');
+		$this->load->view('admin/showtrains',$data);
 		$this->load->view('admin/footer');
 	}
 }

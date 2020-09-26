@@ -10,7 +10,13 @@
 					 
 					availability of seats <?php echo $trains->availability_of_seats; ?>
 					<br>
-					<a href="<?php echo base_url('book/'.$trains->main_train_no) ?>">Book Ticket</a>
+										
+					<?php if(!empty($this->session->userdata('user'))){ ?>
+						<a href="<?php echo base_url('book/'.$trains->main_train_no) ?>">Book Ticket</a>
+					<?php }else { ?>
+						<a href="#" onclick="document.getElementById('id01').style.display='block'" >Book Ticket</a>
+					<?php } ?>	
+					
 				</div>
 		</div>
 		<hr>

@@ -51,14 +51,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+    
         <li><a href="<?php echo base_url('admin/addtrain') ?>">Add trains</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="<?php echo base_url('admin/showtrains') ?>">Show Trains</a></li>
+        <li><a href="<?php echo base_url('admin/showbooking') ?>">Show Bookings</a></li>
+    
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
