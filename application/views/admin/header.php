@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Railway Reservation System</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -42,28 +42,30 @@
     }
   </style>
 </head>
-<body>
+<body class="appBody">
 
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="">Logo</a>
+
+      <a class="navbar-brand" href="#">Railway Reservation System</a>
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
       <ul class="nav navbar-nav">
     
         <li><a href="<?php echo base_url('admin/addtrain') ?>">Add trains</a></li>
         <li><a href="<?php echo base_url('admin/showtrains') ?>">Show Trains</a></li>
         <li><a href="<?php echo base_url('admin/showbooking') ?>">Show Bookings</a></li>
     
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
