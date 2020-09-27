@@ -44,8 +44,9 @@ class Admin extends CI_Controller {
 	}
 	public function dashboard()
 	{
-		$session_data = $this->session->userdata('admin');
-		if(!$session_data){
+		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
 			redirect('admin'); 
 		}
 	 	$this->load->view('admin/header');
@@ -55,10 +56,12 @@ class Admin extends CI_Controller {
 	}
 	public function addtrain()
 	{
-		$session_data = $this->session->userdata('admin');
-		if(!$session_data){
+		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
 			redirect('admin'); 
 		}
+
 		$data['all_stations'] = $this->db->get('rss_station')->result();
 		if($_POST){
 		
@@ -93,6 +96,12 @@ class Admin extends CI_Controller {
 	}
 	public function showbooking()
 	{
+		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
+			redirect('admin'); 
+		}
+
 		$data['all_bookings'] = $this->db->select('*')
 								->from('books')
 								->join('rss_train','rss_train.train_no = books.train_id')
@@ -107,6 +116,10 @@ class Admin extends CI_Controller {
 	public function delete_booking($id)
 	{
 		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
+			redirect('admin'); 
+		}
 		$this->db->where('id', $id);
 		$this->db->delete('books');
 		$this->session->set_flashdata('booking_deleted', 'Booking deleted successfully!');
@@ -114,6 +127,11 @@ class Admin extends CI_Controller {
 	}
 	public function showtrains()
 	{
+		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
+			redirect('admin'); 
+		}
 		$data['trains'] = $this->db->order_by('train_no','desc')->get('rss_train')->result();
 		$this->load->view('admin/header');
 		$this->load->view('admin/showtrains',$data);
@@ -122,6 +140,10 @@ class Admin extends CI_Controller {
 	public function edittrain($id)
 	{
 		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
+			redirect('admin'); 
+		}
 		$data['get_booking'] = $this->db->where('train_no', $id)->get('rss_train')->row();
 
 		$this->load->view('admin/header');
@@ -163,10 +185,19 @@ class Admin extends CI_Controller {
 	public function delettrain($id)
 	{
 		
+		$session_data = $this->session->userdata('admin');		 
+		if(!$session_data[0]){
+			redirect('admin'); 
+		}
 		$this->db->where('train_no', $id);
 		$this->db->delete('rss_train');
 		$this->session->set_flashdata('train_deleted', 'Train deleted successfully!');
 		redirect('admin/showtrains');
+	}
+	public function logout()
+	{
+		$this->session->unset_userdata('admin');
+		redirect('/admin');
 	}
 	
 }

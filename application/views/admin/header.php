@@ -58,7 +58,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        
+      <?php if(!empty($this->session->userdata('admin'))){ ?>
+            
+            <li ><a href="<?php echo base_url('admin/logout'); ?>"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
+
+        <?php  }else{ ?>
+            <li onclick="document.getElementById('id01').style.display='block'"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <?php  } ?>
       </ul>
       <ul class="nav navbar-nav">
     

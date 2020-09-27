@@ -57,6 +57,8 @@ $route['admin/delete_booking/(:any)'] = 'Admin/delete_booking/$1';
 $route['admin/edittrain/(:any)'] = 'Admin/edittrain/$1';
 $route['admin/delettrain/(:any)'] = 'Admin/delettrain/$1';
 $route['admin/showtrains'] = 'Admin/showtrains';
+$route['admin/logout'] = 'admin/logout';
+
 $route['login'] = 'welcome/login';
 $route['logout'] = 'welcome/logout';
 $route['book/(:any)'] = 'welcome/book/$1';
