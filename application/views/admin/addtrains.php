@@ -1,5 +1,6 @@
-<div class="container-fluid">  
-<form action="" method="post">
+<div class="container">  
+<form action="" method="post" class="addTrains">
+  <h3>Add New Train</h3>
   <div class="form-group">
     <label for="email">Train Name</label>
     <input type="text" class="form-control" required name="train_name">
