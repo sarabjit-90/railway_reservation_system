@@ -25,7 +25,7 @@
       <th scope="row"><?php echo $booking->arrival_time; ?></th>
       <th scope="row"><?php echo $booking->departure_time; ?></th>
       <th scope="row"><?php echo $booking->number_of_seats_book; ?></th>
-      <th scope="row"><a href="<?php echo base_url('admin/delete_booking/'.$booking->id) ?>">Delete</a></th>
+      <th scope="row"><a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('admin/delete_booking/'.$booking->id) ?>">Delete</a></th>
     </tr>
   <?php } ?>
 <?php } else { ?> 

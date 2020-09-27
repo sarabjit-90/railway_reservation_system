@@ -72,14 +72,7 @@ class Admin extends CI_Controller {
 			$this->db->insert('rss_train',$data);
 
 			$train_insert_id = $this->db->insert_id();
-
-			// $data_station = array(
-			// 	'name' => $_POST['station_name'],
-			// 	'arrival_time' =>  $_POST['arrival_time'],
-			// 	'train_no' => $train_insert_id 
-			// );
-			// $this->db->insert('rss_station',$data_station);
-
+ 
 			$rrs_starts = array(
 				'train_no' => $train_insert_id,
 				'station_no' => $_POST['start_station_name']
@@ -91,7 +84,8 @@ class Admin extends CI_Controller {
 				'station_no' => $_POST['stop_station_name']
 			);
 			$this->db->insert('rrs_stops_at',$rrs_starts);
-			
+			$this->session->set_flashdata('admin_msg','Train Added!');
+			redirect('admin/showtrains');
 		}
 	 	$this->load->view('admin/header');
 		$this->load->view('admin/addtrains',$data);
@@ -103,6 +97,7 @@ class Admin extends CI_Controller {
 								->from('books')
 								->join('rss_train','rss_train.train_no = books.train_id')
 								->join('rrs_user','rrs_user.user_id = books.user_id' )
+								->order_by('id','desc')
 								->get()->result();
 		
 		$this->load->view('admin/header');
@@ -119,9 +114,59 @@ class Admin extends CI_Controller {
 	}
 	public function showtrains()
 	{
-		$data['trains'] = $this->db->get('rss_train')->result();
+		$data['trains'] = $this->db->order_by('train_no','desc')->get('rss_train')->result();
 		$this->load->view('admin/header');
 		$this->load->view('admin/showtrains',$data);
 		$this->load->view('admin/footer');
 	}
+	public function edittrain($id)
+	{
+		
+		$data['get_booking'] = $this->db->where('train_no', $id)->get('rss_train')->row();
+
+		$this->load->view('admin/header');
+		$this->load->view('admin/edittrains',$data);
+		$this->load->view('admin/footer');
+		if($_POST){
+
+			$data = array(
+				'train_name' => $_POST['train_name'],
+				'arrival_time' => $_POST['arrival_time'],
+				'departure_time' => $_POST['departure_time'],
+				'availability_of_seats' => $_POST['availability_of_seats']
+
+			);
+		
+			$this->db->set($data);
+			$this->db->where('train_no', $id);
+			$this->db->update('rss_train');
+
+
+			$train_insert_id = $id;
+			// $rrs_starts = array(
+			// 	'station_no' => $_POST['start_station_name']
+			// );
+			// $this->db->set($rrs_starts);
+			// $this->db->where('train_no', $train_insert_id);
+			// $this->db->update('rrs_starts');
+			
+			// $rrs_starts = array(
+			// 	'station_no' => $_POST['stop_station_name']
+			// );
+			// $this->db->set($rrs_starts);
+			// $this->db->where('train_no', $train_insert_id);
+			// $this->db->update('rrs_stops_at');
+			redirect('admin/showtrains');
+		}
+		
+	}
+	public function delettrain($id)
+	{
+		
+		$this->db->where('train_no', $id);
+		$this->db->delete('rss_train');
+		$this->session->set_flashdata('train_deleted', 'Train deleted successfully!');
+		redirect('admin/showtrains');
+	}
+	
 }
