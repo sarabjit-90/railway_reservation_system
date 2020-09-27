@@ -30,10 +30,13 @@ class Welcome extends CI_Controller {
 		$use_rdata = $this->session->userdata('user');
 		if(!empty($use_rdata))
 		{
-			$data['books'] = $this->db->where('user_id',$use_rdata[0]->user_id)->get('books')->result();
+			$bookings = $this->db->where('user_id',$use_rdata[0]->user_id)->get('books')->result();
+			$train_ids=[];
+			foreach($bookings as $train_id){
+				$train_ids[] = $train_id->train_id;
+			}
+			$data['train_ids'] = $train_ids;
 		}
-		
-
 		$this->load->view('front/header');
 		$this->load->view('welcome_message',$data);
 		$this->load->view('front/footer');
@@ -53,7 +56,7 @@ class Welcome extends CI_Controller {
 				redirect('/'); 
 			}else{
 
-				//$this->session->set_flashdata('invalid_login','Please enter valid email and password.');
+				$this->session->set_flashdata('invalid_login','Please enter valid email and password.');
 				redirect('/'); 
 			}
 			
@@ -97,7 +100,7 @@ class Welcome extends CI_Controller {
 				'train_id' => $id
 			);
 			$this->db->insert('books',$book);
-			$this->session->set_flashdata('booking_done','Your booking have been completed!');
+			$this->session->set_flashdata('booking_done','Your booking have been done!');
 			redirect('/'); 
 		}
 

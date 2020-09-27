@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <?php //print_r($all_trails); ?>
+  
     <form action="" method="post">
   <div class="form-group">
     <label for="email">Train Name</label>

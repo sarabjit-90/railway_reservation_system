@@ -41,10 +41,12 @@
         <?php  } ?>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
+      <?php if(!empty($this->session->userdata('user'))){ ?>
+        <li class="active"><a href="#"><?php echo 'welcome : '. $this->session->userdata('user')[0]->first_name;    ?></a></li>
+      <?php } ?>
+        <!-- <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Contact</a></li> -->
       </ul>
 
 
