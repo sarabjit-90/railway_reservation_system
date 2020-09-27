@@ -246,6 +246,19 @@ form.modal-content.cusWdt {
     width: 450px;
     padding: 0 20px;padding-bottom: 10px !important;
 }
+table.table {
+    border: 1px solid #ccc;
+}
+table.table thead th {
+    background: #fc0 !important;
+}
+
+table.table tbody th {
+    font-weight: 500;
+}
+table.table tbody tr:nth-child(2n + 1) {
+    background: #eee;
+}
 form.addTrains {
     max-width: 100%;
     width: 500px;
