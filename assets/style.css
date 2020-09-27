@@ -217,6 +217,35 @@ ul.lsit_trn > li {text-align: center;
     border-radius: 5px;
     padding: 15px;
 }
+form.modal-content.cusWdt .close {
+    position: absolute;
+    right: -5px;
+    top: -20px;
+}
+form.modal-content.cusWdt input {
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-top: 0;
+}
+form.modal-content.cusWdt .mdl_btn {
+    text-align: center;
+}
+form.modal-content.cusWdt .mdl_btn > * {
+    background: #fc0 !important;
+    color: #333;
+    font-weight: 600;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    padding: 8px 25px;
+    margin: 10px 5px;
+    border-radius: 5px;
+}
+form.modal-content.cusWdt {
+    max-width: calc(100% - 30px);
+    width: 450px;
+    padding: 0 20px;padding-bottom: 10px !important;
+}
 form.addTrains {
     max-width: 100%;
     width: 500px;

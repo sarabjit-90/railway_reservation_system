@@ -14,7 +14,7 @@
   <style>
 </style>
 </head>
-<body>
+<body class="appBody">
 
 <nav class="navbar navbar-inverse">
   <div class="container">
@@ -27,16 +27,9 @@
       <a class="navbar-brand" href="#">Railway Reservation System</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <!--ul class="nav navbar-nav navbar-right">
         <li onclick="document.getElementById('id01').style.display='block'"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-
+      </ul-->
       <ul class="nav navbar-nav navbar-right">
     
         <?php if(!empty($this->session->userdata('user'))){ ?>
@@ -47,6 +40,13 @@
             <li onclick="document.getElementById('id01').style.display='block'"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <?php  } ?>
       </ul>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
 
     </div>
   </div>
@@ -57,26 +57,23 @@
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="<?php echo base_url('login') ?>" method="post">
+  <form class="modal-content animate cusWdt" action="<?php echo base_url('login') ?>" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       
     </div>
 
-    <div class="container">
+    <div class="containerModal">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="email" required>
 
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" required>
-        
-      <input type="submit" type="submit" value="login">
+      <div class="mdl_btn">
+        <input type="submit" type="submit" value="login">
+        <button  class="cancelbtn">Cancel</button>
+      </div>
       
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button  class="cancelbtn">Cancel</button>
-     
     </div>
   </form>
 </div>
