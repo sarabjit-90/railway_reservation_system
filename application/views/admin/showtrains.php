@@ -1,4 +1,5 @@
 <div class="container">
+    <h3 class="trnHd">Train Schedule</h3>
     <p><?php  // echo $this->session->flashdata('booking_deleted') ?></p>
   <?php if($this->session->flashdata('admin_msg')){ ?>
 		<div class="alert alert-success" role="alert">
