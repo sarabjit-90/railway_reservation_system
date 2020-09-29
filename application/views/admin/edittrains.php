@@ -1,6 +1,6 @@
 <div class="container">  
 <form action="" method="post" class="addTrains">
-  <h3>Add New Train</h3>
+  <h3>Edit Train</h3>
   
   <?php //print_r($get_booking); ?>
   <div class="form-group">
