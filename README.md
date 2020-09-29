@@ -53,4 +53,4 @@ $db['default'] = array(
 
 
 ## License
-[Sarvjit Singh](linkedin.com)
+[Sarabjit Singh](https://www.linkedin.com/in/sarabjit-singh-799307114/)
